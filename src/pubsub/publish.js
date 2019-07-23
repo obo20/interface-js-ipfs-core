@@ -33,12 +33,9 @@ module.exports = (createCommon, options) => {
 
     after((done) => common.teardown(done))
 
-    it('should error on string messags', (done) => {
+    it('should publish message from string', (done) => {
       const topic = getTopic()
-      ipfs.pubsub.publish(topic, 'hello friend', (err) => {
-        expect(err).to.exist()
-        done()
-      })
+      ipfs.pubsub.publish(topic, 'hello friend', done)
     })
 
     it('should publish message from buffer', (done) => {
